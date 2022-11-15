@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+</head>
+<body>    
+
+    <div id="app">
+        <h1 v-if="auth">Bem vindo {{usuario}}</h1>
+        <h1 v-else-if="visitante">Usuário: Visitante</h1>
+        <p v-else>Nenhum usuário está logado</p>
+
+        <!-- <button v-on:click="auth = !auth">
+            {{ auth ? 'Deslogar' : 'Entrar'}}
+        </button> -->
+
+        <!-- Sintaxe reduzida -->
+        <button @click="auth = !auth">
+            {{ auth ? 'Deslogar' : 'Entrar'}}
+        </button>
+
+        <button @click="visitante = !visitante">
+            {{ visitante ? 'Deslogar do visitante' : 'Entrar como visitante'}}
+        </button>
+
+        <!-- se for true ele mostrar se false não -->
+        <h2 v-show="visitante">Aprendendo VueJS na prática</h2>
+
+        <!-- <a :href="alguma coisa"></a> -->
+
+        <!-- v-model não muda -->
+        <!-- <input :value="valor" v-model=""> -->
+    </div>
+    
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    usuario: 'Thiago',
+                    auth: false,
+                    visitante: false,
+                }
+            },           
+        })
+    </script>
+    
+</body>
+</html>

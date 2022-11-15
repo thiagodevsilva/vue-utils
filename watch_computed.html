@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+</head>
+<body>    
+
+    <div id="app">
+        <h1>{{nome}}</h1>
+        <p>Nome grande: {{ resultadoNome }}</p>
+        <!-- <input v-bind:value="nome" v-on:input="nome = $event.target.value"> -->
+        <input v-model="nome">
+        <br>
+        <button v-on:click="somar">Somar #</button>
+
+        <hr>
+
+        <h1>{{numero}}</h1>
+        <button v-on:click="numero++">Somar número</button>
+
+    </div>
+    
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    nome: 'Thiago',
+                    numero: 10
+                }
+            },
+            methods:{
+                somar(){
+                    this.nome += '#';
+                }
+                // resultadoNome(){
+                //     console.log('Chamou resultadoNome()')
+                //     return this.nome.length >= 10 ? 'Mais que 10 letras' : 'Menos que 10 letras';
+                // }
+            },
+            computed:{
+                resultadoNome(){                    
+                    return this.nome.length >= 10 ? 'Mais que 10 letras' : 'Menos que 10 letras';
+                }    
+            },
+            watch:{
+                nome(novo, antigo){
+                    //ou seja sempre que a variavel nome mudar ele vai chamar esse watch
+                    console.log('novo valor: ' + novo);
+                    console.log('antigo valor: ' + antigo);
+
+                    setTimeout(() => {
+                        this.numero = 999;
+                    }, 2000)
+
+                }
+            }            
+        })
+    </script>
+    
+</body>
+</html>

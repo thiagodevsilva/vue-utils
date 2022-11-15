@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+</head>
+<body>    
+
+    <!-- listas -->
+    <div id="app">
+        <ul>
+            <li v-for="tech in tecnologias"> {{ tech }} </li>
+            <!-- <li v-for="(tech, index) in tecnologias" :key="tech"> {{ index }} - {{ tech }} </li> -->
+        </ul>
+
+        <div v-for="aluno in alunos" :key="aluno.id">
+            <span>{{aluno.id}}: {{aluno.nome}}</span><br>
+            <span>Status: {{aluno.status}}</span>
+            <hr>
+        </div>
+    </div>
+    
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    tecnologias: ['JAVASCRIPT','VUEJS','NODEJS','PHP', 'REACTJS'],
+                    alunos: [
+                        {id: 1, nome: 'Thais', status: 'Cursando'},
+                        {id: 2, nome: 'Quesia', status: 'Cursando'},
+                        {id: 3, nome: 'Thiago', status: 'Concluído'},
+                    ]
+                }
+            },           
+        })
+    </script>
+    
+</body>
+</html>

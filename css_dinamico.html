@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+</head>
+<body>    
+
+    <div id="app">
+        <button class="box" v-on:click="mudaBox" v-bind:class="{'a-tivo': btnStatus}"></button>
+        <button v-on:click="mudaBox">Ativar botão</button>
+    </div>
+    
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    btnStatus: false
+                }
+            },
+            methods:{
+                mudaBox(){
+                    this.btnStatus = !this.btnStatus;
+                    console.log(this.btnStatus);
+                }                
+            }           
+        })
+    </script>
+
+    <style>
+        #app {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .box {
+            background-color: red;
+            width: 200px;
+            height: 200px;
+            border: 0;
+            outline: none;
+        }
+
+        .a-tivo {
+            background-color: green;
+            border-radius: 50%;
+        }
+
+    </style>
+    
+</body>
+</html>
